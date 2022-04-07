@@ -31,6 +31,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("1 plus 13")){
             return "14";
         }
+        if (query.toLowerCase().contains("james bond")){
+            return "Sean Connery";
+        }
         if (query.toLowerCase().contains("which of the following numbers is the largest")){
             query = query.replaceAll(" ","");
             String numbersString = query.split(":")[2];
