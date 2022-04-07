@@ -17,6 +17,23 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("1 plus 13")){
             return "14";
         }
+        if (query.toLowerCase().contains("which of the following numbers is the largest")){
+            query = query.replaceAll(" ","");
+            String numbersString = query.split(":")[1];
+            String[] numbers = numbersString.split(",");
+            int biggest = 0;
+            for (String num:numbers) {
+                if(Integer.parseInt(num) > biggest) biggest = Integer.parseInt(num);
+            }
+            return String.valueOf(biggest);
+        }
+        if (query.toLowerCase().contains("plus")){
+            String[] numbers = query.split(" ");
+            int num1 = Integer.parseInt(numbers[2]);
+            int num2 = Integer.parseInt(numbers[4]);
+            int total = num1 + num2;
+            return String.valueOf(total);
+        }
         return "";
     }
 }
