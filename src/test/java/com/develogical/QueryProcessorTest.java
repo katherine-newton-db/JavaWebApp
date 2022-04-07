@@ -36,19 +36,27 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void bond() throws Exception {
+        assertThat(queryProcessor.process("james bond"), containsString("Sean Connery"));
+    }
+    @Test
+    public void paris() throws Exception {
+        assertThat(queryProcessor.process("eiffel tower"), containsString("Paris"));
+    }
+    @Test
+    public void may() throws Exception {
+        assertThat(queryProcessor.process("Theresa May"), containsString("2016"));
+    }
+
+    @Test
     public void query1() throws Exception {
         assertThat(queryProcessor.process("what is 1 plus 13"), containsString("14"));
     }
 
-//    @Test
-//    public void query2() throws Exception {
-//        assertThat(queryProcessor.process("which of the following numbers is the largest: 42,87,223,755"), containsString("755"));
-//    }
-//
-//    @Test
-//    public void query2a() throws Exception {
-//        assertThat(queryProcessor.process("which of the following numbers is the largest: 42,87,223,755"), containsString("755"));
-//    }
+    @Test
+    public void query2() throws Exception {
+        assertThat(queryProcessor.process(":which of the following numbers is the largest: 42,87,223,755"), containsString("755"));
+    }
 
     @Test
     public void queryPrime() throws Exception {
