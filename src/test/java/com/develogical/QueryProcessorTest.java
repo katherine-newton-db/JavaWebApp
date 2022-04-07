@@ -49,4 +49,9 @@ public class QueryProcessorTest {
 //    public void query2a() throws Exception {
 //        assertThat(queryProcessor.process("which of the following numbers is the largest: 42,87,223,755"), containsString("755"));
 //    }
+
+    @Test
+    public void queryPrime() throws Exception {
+        assertThat(queryProcessor.process(":which is prime: 3,4,6"), containsString("3"));
+    }
 }

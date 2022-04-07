@@ -27,6 +27,16 @@ public class QueryProcessor {
             }
             return String.valueOf(biggest);
         }
+        if (query.toLowerCase().contains("which of the following numbers is the smallest")){
+            query = query.replaceAll(" ","");
+            String numbersString = query.split(":")[2];
+            String[] numbers = numbersString.split(",");
+            int smallest = 0;
+            for (String num:numbers) {
+                if(Integer.parseInt(num) < smallest) smallest = Integer.parseInt(num);
+            }
+            return String.valueOf(smallest);
+        }
         if (query.toLowerCase().contains("plus")){
             String[] numbers = query.split(" ");
             int num1 = Integer.parseInt(numbers[3]);
@@ -53,7 +63,31 @@ public class QueryProcessor {
                     squaresAndCubes = squaresAndCubes + numValue + ", ";
                 }
             }
-            return squaresAndCubes.substring(0,squaresAndCubes.length()-2);
+            if (squaresAndCubes.length() > 0){
+                return squaresAndCubes.substring(0,squaresAndCubes.length()-2);
+            }
+            return squaresAndCubes;
+        }
+        if (query.toLowerCase().contains("prime")){
+            query = query.replaceAll(" ","");
+            String numbersString = query.split(":")[2];
+            String[] numbers = numbersString.split(",");
+            String prime = "";
+            for (String num:numbers) {
+                int numValue = Integer.parseInt(num);
+                boolean primeNo = false;
+                for (int i = 2; i < numValue; i++) {
+                    if(numValue%i == 0)
+                    {
+                        primeNo = true;
+                    }
+                }
+                if (!primeNo) prime = prime + numValue + ", ";
+            }
+            if (prime.length() > 0){
+                return prime.substring(0,prime.length()-2);
+            }
+            return prime;
         }
         return "";
     }
