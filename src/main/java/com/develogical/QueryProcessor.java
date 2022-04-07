@@ -19,7 +19,7 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("which of the following numbers is the largest")){
             query = query.replaceAll(" ","");
-            String numbersString = query.split(":")[1];
+            String numbersString = query.split(":")[2];
             String[] numbers = numbersString.split(",");
             int biggest = 0;
             for (String num:numbers) {
