@@ -37,9 +37,23 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("multiplied")){
             String[] numbers = query.split(" ");
             int num1 = Integer.parseInt(numbers[3]);
-            int num2 = Integer.parseInt(numbers[5]);
+            int num2 = Integer.parseInt(numbers[6]);
             int total = num1 * num2;
             return String.valueOf(total);
+        }
+        if (query.toLowerCase().contains("square and a cube")){
+            query = query.replaceAll(" ","");
+            String numbersString = query.split(":")[2];
+            String[] numbers = numbersString.split(",");
+            String squaresAndCubes = "";
+            for (String num:numbers) {
+                int numValue = Integer.parseInt(num);
+                if(numValue%2 == 0 && numValue%3==0)
+                {
+                    squaresAndCubes = squaresAndCubes + numValue + ", ";
+                }
+            }
+            return squaresAndCubes.substring(0,squaresAndCubes.length()-2);
         }
         return "";
     }
