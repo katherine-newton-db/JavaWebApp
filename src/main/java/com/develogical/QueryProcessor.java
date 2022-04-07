@@ -16,7 +16,8 @@ public class QueryProcessor {
         }
 
         if (query.toLowerCase().contains("fibonacci")){
-            return "987";
+            String sub = query.split(" ")[4];
+            return String.valueOf(fib(Integer.parseInt(sub.substring(0,sub.length()-2))));
         }
         if (query.toLowerCase().contains("banana")){
             return "yellow";
@@ -110,5 +111,12 @@ public class QueryProcessor {
             return prime;
         }
         return "";
+    }
+
+    public int fib(int n) {
+        if (n <= 1)
+            return n;
+        return fib(n-1) + fib(n-2);
+
     }
 }
