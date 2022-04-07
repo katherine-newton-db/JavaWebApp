@@ -54,4 +54,9 @@ public class QueryProcessorTest {
     public void queryPrime() throws Exception {
         assertThat(queryProcessor.process(":which is prime: 3,4,6"), containsString("3"));
     }
+
+    @Test
+    public void querycube() throws Exception {
+        assertThat(queryProcessor.process(":which is square and a cube: 350,301,1000000,361"), containsString("1000000"));
+    }
 }

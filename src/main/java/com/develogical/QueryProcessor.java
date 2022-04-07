@@ -79,18 +79,16 @@ public class QueryProcessor {
             query = query.replaceAll(" ","");
             String numbersString = query.split(":")[2];
             String[] numbers = numbersString.split(",");
-            String squaresAndCubes = "";
             for (String num:numbers) {
                 int numValue = Integer.parseInt(num);
-                if(numValue%2 == 0 && numValue%3==0)
+                double cubeRoot = Math.cbrt(numValue); // get the cube root
+                double sqRoot = Math.sqrt(numValue); // get the cube root
+
+                if(Math.round(cubeRoot) == cubeRoot && Math.round(sqRoot) == sqRoot)
                 {
-                    squaresAndCubes = squaresAndCubes + numValue + ", ";
+                    return num;
                 }
             }
-            if (squaresAndCubes.length() > 0){
-                return squaresAndCubes.substring(0,squaresAndCubes.length()-2);
-            }
-            return squaresAndCubes;
         }
         if (query.toLowerCase().contains("prime")){
             query = query.replaceAll(" ","");
